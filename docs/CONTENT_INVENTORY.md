@@ -15,7 +15,8 @@
 | `/llms-ai-models` | LLMs & AI Models \| Mysite | Class page | education.js → classPages |
 | `/ai-tools-applications` | AI Tools & Applications \| Mysite | Class page | education.js → classPages |
 | `/practical-ai-skills` | Practical AI Skills \| Mysite | Class page | education.js → classPages |
-| `/career-awareness` | Career Awareness \| Mysite | Inspirational Speakers | career.js |
+| `/career-awareness` | Career Awareness \| Mysite | Inspirational Speakers (upcoming) | career.js → career |
+| `/past-speakers` | — (new page; the original had no equivalent) | Past Speakers (timeline) | career.js → pastEvents |
 | `/innovation` | AI News \| Mysite | Latest AI News | news.js |
 | `/faqs` | FAQs \| Mysite | FAQs | faq-contact.js |
 | `/contact-8` | Contact Us \| Mysite | Contact | faq-contact.js, site.js |
@@ -33,7 +34,7 @@ Wix `sitemap.xml` lists exactly these 11 pages. The brand name in every `<title>
 - FAQs → `/faqs`
 - Contact Us → `/contact-8`
 
-Also in the original header: a Wix "member login" person icon (no label). → rendered as the **Log In** pill, marked TBD (no auth exists).
+Also in the original header: a Wix "member login" person icon (no label). → rendered as the **Log In** pill. It opens the admin sign-in (see `docs/ADMIN.md`); until a Supabase project is connected it stays inert and carries a TBD chip.
 
 **Footer / contact block**
 
@@ -158,19 +159,7 @@ Section heading: **What is LLM** (original: nothing beneath it)
 
 **Heading:** Inspirational Speakers
 
-### Christopher Dede
-Photo: `/media/career/christopher-dede.webp` (original alt: "Christopher Dede")
-
-**Talk:** Preparing for a Future of Multiple Careers in the Age of AI  
-**When:** September 26th, 3 P.M. PST via Google Meet
-
-> Chris Dede is a Senior Research Fellow at the Harvard Graduate School of Education and was for 22 years the Timothy E. Wirth Professor in Learning Technologies. His fields of scholarship include emerging technologies, policy, and leadership. Chris is a Co-Principal Investigator and Associate Director for Research of the NSF-funded National Artificial Intelligence Institute in Adult Learning and Online Education. He is a Fellow of the American Educational Research Association, a Fellow of the Online Learning Consortium, a Scholar of the Immersive Learning Research Network, and a Distinguished Fellow of the Learning Engineering Network.
->
-> In 2020 Chris co-founded the Silver Lining for Learning initiative ( [https://silverliningforlearning.org](https://silverliningforlearning.org/) ). His most recent co-edited books include: Virtual, Augmented, and Mixed Realities in Education; Learning engineering for online education; and New Models for Lifelong Learning in the Digital Economy. His professional website is [https://chrisdede.com](https://chrisdede.com/)
-
-Button: "Join Meeting" → https://forms.fillout.com/t/3T7C7jhKYPus
-
-Note: Before attending this meeting, Dr. Dede would like guests to watch an intro video under [Understanding AI Literacy](https://www.chrisdede.com/) from minutes 4:30 - 25:15.
+The original page opened with Christopher Dede's talk (now a past event — see the next section), followed by two "To Be Announced" slots. A live "latest event" is entered by an admin and shown above the slots (see `docs/ADMIN.md`).
 
 ### To Be Announced
 Photo: `/media/career/speaker-tba.webp` (original alt: "image.png")
@@ -187,6 +176,23 @@ Photo: `/media/career/speaker-tba.webp` (original alt: "image.png")
 > By bringing real professionals into conversation with students, AI-Ways Forward aims to make the future of work more understandable and relevant. Students will be able to explore how AI may affect the careers they are considering, discover skills they can begin developing now, and gain a more realistic understanding of what it may mean to work alongside increasingly capable AI.
 >
 > The goal is not to tell students which careers they should pursue. Instead, AI-Ways Forward wants to give them the information and perspectives they need to make better-informed decisions about their own futures.
+
+## Past Speakers — `/past-speakers`
+
+New page: events that have happened, as a timeline grouped by year. The first entry is the original Career Awareness copy, unchanged; only the "Join Meeting" button (it pointed to https://forms.fillout.com/t/3T7C7jhKYPus) was dropped because the meeting is over.
+
+### Christopher Dede
+Photo: `/media/career/christopher-dede.webp` (original alt: "Christopher Dede")
+
+**Talk:** Preparing for a Future of Multiple Careers in the Age of AI  
+**When:** September 26th, 3 P.M. PST via Google Meet  
+**Sort date:** 2026-09-26 (year inferred — the original said "September 26th" only)
+
+> Chris Dede is a Senior Research Fellow at the Harvard Graduate School of Education and was for 22 years the Timothy E. Wirth Professor in Learning Technologies. His fields of scholarship include emerging technologies, policy, and leadership. Chris is a Co-Principal Investigator and Associate Director for Research of the NSF-funded National Artificial Intelligence Institute in Adult Learning and Online Education. He is a Fellow of the American Educational Research Association, a Fellow of the Online Learning Consortium, a Scholar of the Immersive Learning Research Network, and a Distinguished Fellow of the Learning Engineering Network.
+>
+> In 2020 Chris co-founded the Silver Lining for Learning initiative ( [https://silverliningforlearning.org](https://silverliningforlearning.org/) ). His most recent co-edited books include: Virtual, Augmented, and Mixed Realities in Education; Learning engineering for online education; and New Models for Lifelong Learning in the Digital Economy. His professional website is [https://chrisdede.com](https://chrisdede.com/)
+
+Note: Before attending this meeting, Dr. Dede would like guests to watch an intro video under [Understanding AI Literacy](https://www.chrisdede.com/) from minutes 4:30 - 25:15.
 
 ## Latest AI News — `/innovation`
 

@@ -7,7 +7,7 @@ export const nav = [
   { label: 'Home', to: '/' },
   { label: 'About Us', to: '/about-7' },
   { label: 'Services', to: '/services' },
-  { label: 'Career Awareness', to: '/career-awareness' },
+  { label: 'Career Awareness', to: '/career-awareness', alsoActiveOn: ['/past-speakers'] },
   { label: 'FAQs', to: '/faqs' },
   { label: 'Contact Us', to: '/contact-8' },
 ];

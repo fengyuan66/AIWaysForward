@@ -2,8 +2,8 @@
   "scanned": "2026-10-07",
   "designMd": "none (design handoff folder acts as the locked system: AI Ways Forward redesign_System/design_handoff_homepage_2a)",
   "fontStack": "Sora Variable + Space Grotesk Variable + Playfair Display (Fontsource, self-hosted)",
-  "palette": "tokens.css — handoff 1c/2a palette (Ink #141414, Arrow Red #A33328, Deep Brick #6E2622, Paper #F1EFEC, Rule #E0DCD5)",
+  "palette": "tokens.css — handoff 1c/2a palette (Ink #141414, Arrow Red #A33328, Deep Brick #6E2622, Paper #F1EFEC, Rule #E0DCD5) + addendum Discord blurple for one button",
   "motion": "motion-cut: no animation library; CSS keyframes only",
   "spacing": "handoff scale 4/8/12/20/32/48/72",
-  "framework": "Vite 8 + React 19 + React Router 7"
+  "framework": "Vite 8 + React 19 + React Router 7; Supabase (@supabase/supabase-js, lazy) for admin auth + editable content"
 }

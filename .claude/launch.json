@@ -4,8 +4,28 @@
     {
       "name": "aiwaysforward-dev",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "--host", "127.0.0.1"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--host",
+        "127.0.0.1"
+      ],
       "port": 5173
+    },
+    {
+      "name": "aiwaysforward-demo",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:demo",
+        "--",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "5174"
+      ],
+      "port": 5174
     }
   ]
 }

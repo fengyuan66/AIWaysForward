@@ -20,7 +20,7 @@
 .nav__logo img { width: min(190px, 50vw); height: auto; }
 @media (min-width: 40rem) { .nav__logo img { width: 210px; } }
 
-.nav__links { display: none; align-items: center; gap: 22px; margin: 0; padding: 0; list-style: none; }
+.nav__links { display: none; align-items: center; gap: 18px; margin: 0; padding: 0; list-style: none; }
 .nav__link {
   position: relative;
   display: inline-block;
@@ -36,7 +36,7 @@
   font-weight: 700; pointer-events: none;
 }
 .nav__link:hover { color: var(--color-red); }
-.nav__link[aria-current='page'] { color: var(--color-red); font-weight: 700; }
+.nav__link[aria-current='page'], .nav__link.is-parent { color: var(--color-red); font-weight: 700; }
 
 .nav__actions { display: none; align-items: center; gap: var(--space-xs); }
 
@@ -54,13 +54,14 @@
 .nav__menu-btn:hover { background: var(--color-ink); color: var(--color-surface); }
 .nav__menu-btn:active { transform: translateY(1px); }
 
-@media (min-width: 72rem) { /* 1152px — nav needs ~1056px of content width */
+@media (min-width: 72rem) { /* 1152px — nav needs ~1062px of content width (measured with the Discord icon and the Log In TBD chip) */
   .nav { padding-inline: 0; }
   .nav__links { display: flex; }
   .nav__actions { display: flex; }
   .nav__menu-btn { display: none; }
 }
-@media (min-width: 76rem) { .nav__links { gap: 28px; } }
+@media (min-width: 76rem) { .nav__links { gap: 24px; } } /* 1216 */
+@media (min-width: 80rem) { .nav__links { gap: 28px; } } /* 1280 — the handoff gap */
 
 /* mobile sheet (addendum) */
 .sheet {
@@ -79,7 +80,7 @@
   font: 700 1.5rem / 1.2 var(--font-heading); letter-spacing: -0.025em;
   color: var(--color-ink); white-space: nowrap;
 }
-.sheet__link[aria-current='page'] { color: var(--color-red); }
+.sheet__link[aria-current='page'], .sheet__link.is-parent { color: var(--color-red); }
 .sheet__actions { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
 
 /* ── Buttons (DS) ─────────────────────────────────────────── */
@@ -112,6 +113,19 @@
 .btn--sm { font-size: 0.8125rem; padding: 9px 16px; gap: var(--space-xs); }
 .btn--sm.btn--ghost { background: var(--color-surface); color: var(--color-ink); border-color: var(--color-rule); }
 .btn--sm.btn--ghost:hover { background: var(--color-ink); color: var(--color-surface); }
+
+/* Discord's own blurple + mark (addendum): the one button that wears a third-party brand colour */
+.btn--discord { background: var(--color-discord); color: var(--color-on-red); }
+.btn--discord:hover { background: var(--color-discord-hover); color: var(--color-on-red); }
+.icon-discord { flex: none; display: block; }
+
+/* signed-in state of the account pill: Ink fill, like the selected option of the segmented pill */
+.btn--sm.btn--ink { background: var(--color-ink); color: var(--color-surface); border-color: var(--color-ink); }
+.btn--sm.btn--ink:hover { background: var(--color-charcoal); border-color: var(--color-charcoal); color: var(--color-surface); }
+
+/* armed two-step delete (admin) */
+.btn--sm.btn--ghost.btn--danger, .btn--sm.btn--ghost.btn--danger:hover { background: var(--color-red); border-color: var(--color-red); color: var(--color-on-red); }
+.btn--sm.btn--ghost.btn--danger:hover { background: var(--color-brick); border-color: var(--color-brick); }
 
 /* text link "More →" (DS 1c) */
 .more {
@@ -157,23 +171,60 @@
 .stripe--dark .stripe__label { color: var(--color-tile-label-dark); }
 .stripe .tbd { flex: none; }
 
-/* ── Ink + Arrow Red duotone (DS "Gallery art": ink + red at ~60%) ── */
-.tone { position: relative; isolation: isolate; overflow: hidden; background: var(--color-ink); }
+/* ── Duotone (DS "Gallery art": ink + Arrow Red at ~60%) ──
+   `.tone` alone is the original ink + red multiply (education class cards, class-page hero).
+   The home rail uses the 2a artboard's three tile hues — `.tone--red`, `.tone--light`, `.tone--dark` — each
+   built the same way: the photo is greyscaled and re-curved (--tone-img), ::before imposes the tile's hue and
+   saturation while keeping the photo's luminance (blend: color), ::after multiplies the highlights down. */
+.tone {
+  --tone-img: grayscale(1) contrast(1.12) brightness(1.02);
+  --tone-lift: transparent;
+  --tone-lift-blend: screen;
+  --tone-cap: var(--color-red);
+  --tone-cap-opacity: 0.62;
+  position: relative; isolation: isolate; overflow: hidden; background: var(--color-ink);
+}
 .tone > img, .tone > picture img {
   width: 100%; height: 100%; object-fit: cover;
-  filter: grayscale(1) contrast(1.12) brightness(1.02);
+  filter: var(--tone-img);
   transition: filter var(--dur-med) var(--ease-out);
 }
-/* low-contrast sources (pale or flat) need a harder grayscale before the red multiply */
-.tone--punch > img { filter: grayscale(1) contrast(2.3) brightness(0.72); }
-.tone::after {
-  content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: var(--color-red); mix-blend-mode: multiply; opacity: 0.62;
+.tone::before, .tone::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
   transition: opacity var(--dur-med) var(--ease-out);
 }
+.tone::before { z-index: 1; background: var(--tone-lift); mix-blend-mode: var(--tone-lift-blend); }
+.tone::after { z-index: 2; background: var(--tone-cap); mix-blend-mode: multiply; opacity: var(--tone-cap-opacity); }
+
+/* low-contrast sources (pale or flat) need a harder grayscale before the red multiply */
+.tone--punch { --tone-img: grayscale(1) contrast(2.3) brightness(0.72); }
+
+.tone--red, .tone--dark, .tone--light { --tone-lift-blend: color; }
+/* red — Arrow Red tile (#8E2C22 / #A33328 on the artboard) */
+.tone--red {
+  --tone-img: grayscale(1) contrast(1.25) brightness(0.92);
+  --tone-lift: var(--color-red);
+  --tone-cap: var(--color-brick);
+  --tone-cap-opacity: 0.35;
+}
+/* dark — Ink tile (#1F1D1B / #282522): warm near-black, the photo's highlights held low */
+.tone--dark {
+  --tone-img: grayscale(1) contrast(1.2) brightness(0.8);
+  --tone-lift: var(--color-charcoal);
+  --tone-cap: var(--color-ink);
+  --tone-cap-opacity: 0.3;
+}
+/* light — paper tile (#E3DFD8 / #DAD5CD): high-key, shadows lifted toward the page ground */
+.tone--light {
+  --tone-img: grayscale(1) contrast(0.8) brightness(1.35);
+  --tone-lift: var(--color-rule-strong);
+  --tone-cap: var(--color-ground);
+  --tone-cap-opacity: 0.8;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .tone--reveal:hover > img, .tone--punch.tone--reveal:hover > img { filter: none; }
-  .tone--reveal:hover::after { opacity: 0; }
+  .tone--reveal:hover > img { filter: none; }
+  .tone--reveal:hover::before, .tone--reveal:hover::after { opacity: 0; }
 }
 
 /* ── Footer (DS: Deep Brick) ─────────────────────────────── */
@@ -185,7 +236,7 @@
 }
 .foot__contact { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-xs); }
 .foot__title { font: 700 1.1875rem / 1.2 var(--font-heading); color: var(--color-surface); margin: 0 0 6px; letter-spacing: 0; }
-.foot__line { font-size: var(--text-small); color: var(--color-footer-text); }
+.foot__line { font-size: var(--text-small); color: var(--color-footer-text); white-space: nowrap; }
 .foot a.foot__line:hover { color: var(--color-surface); }
 .foot__discord { color: var(--color-surface) !important; text-decoration: underline; text-underline-offset: 3px; }
 .foot__yt { display: inline-flex; margin-top: var(--space-xs); padding: 2px; border-radius: 6px; }
@@ -279,3 +330,20 @@ textarea.field__control { min-height: 9rem; resize: vertical; }
   .news-row { grid-template-columns: 172px minmax(0, 1fr); gap: var(--space-md) var(--space-lg); }
   .news-row__img { max-width: none; }
 }
+
+/* ── Log In dialog + form helpers (addendum) ─────────────── */
+.field__hint { font-size: 0.8125rem; line-height: 1.45; color: var(--color-muted); }
+select.field__control { appearance: auto; }
+
+/* native <dialog>: flat, hairline-bordered, same card vocabulary as the forms — no shadow */
+.dialog {
+  width: min(440px, calc(100% - 2 * var(--gutter)));
+  padding: 0;
+  color: var(--color-charcoal);
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-card);
+}
+.dialog::backdrop { background: color-mix(in srgb, var(--color-ink) 55%, transparent); }
+.dialog__panel { padding: clamp(20px, 4vw, 32px); }
+.dialog__title { font: 800 1.625rem / 1.15 var(--font-heading); letter-spacing: -0.02em; }

@@ -39,6 +39,10 @@
   --color-ink-muted: #b8b2ac;
   --color-ink-soft: #8a837d;
 
+  /* addendum — Discord's own brand colours, for the "Join the Discord" button only (white on blurple 4.6:1, on hover 6.4:1) */
+  --color-discord: #5865f2;
+  --color-discord-hover: #4752c4;
+
   --color-on-red: var(--color-surface); /* text on Arrow Red fills (7.2:1) */
   --color-focus: var(--color-red);
 

@@ -9,7 +9,7 @@ const site = await load('site.js');
 const { about } = await load('about.js');
 const { services } = await load('services.js');
 const edu = await load('education.js');
-const { career } = await load('career.js');
+const { career, pastEvents } = await load('career.js');
 const { news } = await load('news.js');
 const { faqs, contactPage } = await load('faq-contact.js');
 
@@ -38,7 +38,8 @@ const rows = [
   ['/llms-ai-models', 'LLMs & AI Models \| Mysite', 'Class page', 'education.js → classPages'],
   ['/ai-tools-applications', 'AI Tools & Applications \| Mysite', 'Class page', 'education.js → classPages'],
   ['/practical-ai-skills', 'Practical AI Skills \| Mysite', 'Class page', 'education.js → classPages'],
-  ['/career-awareness', 'Career Awareness \| Mysite', 'Inspirational Speakers', 'career.js'],
+  ['/career-awareness', 'Career Awareness \| Mysite', 'Inspirational Speakers (upcoming)', 'career.js → career'],
+  ['/past-speakers', '— (new page; the original had no equivalent)', 'Past Speakers (timeline)', 'career.js → pastEvents'],
   ['/innovation', 'AI News \| Mysite', 'Latest AI News', 'news.js'],
   ['/faqs', 'FAQs \| Mysite', 'FAQs', 'faq-contact.js'],
   ['/contact-8', 'Contact Us \| Mysite', 'Contact', 'faq-contact.js, site.js'],
@@ -55,7 +56,7 @@ w('**Navigation** (order and labels as on the original):');
 w();
 w(site.nav.map((n) => `- ${n.label} → \`${n.to}\``).join('\n'));
 w();
-w('Also in the original header: a Wix "member login" person icon (no label). → rendered as the **Log In** pill, marked TBD (no auth exists).');
+w('Also in the original header: a Wix "member login" person icon (no label). → rendered as the **Log In** pill. It opens the admin sign-in (see `docs/ADMIN.md`); until a Supabase project is connected it stays inert and carries a TBD chip.');
 w();
 w('**Footer / contact block**');
 w();
@@ -134,24 +135,33 @@ for (const [slug, p] of Object.entries(edu.classPages)) {
 w('## Career Awareness — `/career-awareness`');
 w();
 w(`**Heading:** ${career.title}`);
-for (const s of career.speakers) {
+w();
+w('The original page opened with Christopher Dede\'s talk (now a past event — see the next section), followed by two "To Be Announced" slots. A live "latest event" is entered by an admin and shown above the slots (see `docs/ADMIN.md`).');
+for (const s of career.slots) {
   w();
   w(`### ${s.name}`);
   w(`Photo: \`${s.photo}\` (original alt: "${s.alt}")`);
-  if (!s.tba) {
-    w();
-    w(`**Talk:** ${s.talk}  `);
-    w(`**When:** ${s.when}`);
-    w();
-    w(career.speakers[0].bio.map((b) => quote(segs(b))).join('\n>\n'));
-    w();
-    w(`Button: "${s.join.label}" → ${s.join.href}`);
-    w();
-    w(`Note: ${segs(s.note)}`);
-  }
 }
 w();
 w(paras(career.paragraphs));
+w();
+
+w('## Past Speakers — `/past-speakers`');
+w();
+w('New page: events that have happened, as a timeline grouped by year. The first entry is the original Career Awareness copy, unchanged; only the "Join Meeting" button (it pointed to https://forms.fillout.com/t/3T7C7jhKYPus) was dropped because the meeting is over.');
+for (const e of pastEvents) {
+  w();
+  w(`### ${e.name}`);
+  w(`Photo: \`${e.photo}\` (original alt: "${e.alt}")`);
+  w();
+  w(`**Talk:** ${e.talk}  `);
+  w(`**When:** ${e.when}  `);
+  w(`**Sort date:** ${e.date} (year inferred — the original said "September 26th" only)`);
+  w();
+  w(e.bio.map((b) => quote(segs(b))).join('\n>\n'));
+  w();
+  w(`Note: ${segs(e.note)}`);
+}
 w();
 
 w('## Latest AI News — `/innovation`');

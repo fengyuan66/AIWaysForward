@@ -6,16 +6,19 @@
   "description": "AI-Ways Forward â€” frontend redesign (Vite + React)",
   "scripts": {
     "dev": "vite",
+    "dev:demo": "vite --mode demo",
     "build": "vite build",
     "preview": "vite preview",
     "media": "node scripts/optimize-media.mjs",
     "inventory": "node scripts/export-content-inventory.mjs",
-    "verify:content": "node scripts/verify-content.mjs"
+    "verify:content": "node scripts/verify-content.mjs",
+    "seed:sql": "node scripts/export-seed-sql.mjs"
   },
   "dependencies": {
     "@fontsource-variable/sora": "^5.3.0",
     "@fontsource-variable/space-grotesk": "^5.3.0",
     "@fontsource/playfair-display": "^5.3.0",
+    "@supabase/supabase-js": "^2.117.3",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-router-dom": "^7.18.4"

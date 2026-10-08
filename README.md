@@ -16,10 +16,12 @@ npm run preview    # serve the production build
 | `npm run media` | Regenerates `public/media/` from the raw originals in `source-assets/` |
 | `npm run inventory` | Regenerates `docs/CONTENT_INVENTORY.md` from `src/content/` |
 | `npm run verify:content` | Checks every authored string against the live Wix site (needs network) |
+| `npm run dev:demo` | Dev server with a localStorage stand-in for the admin backend (sign in as `anything@admin.demo`) |
+| `npm run seed:sql` | Regenerates `supabase/seed.sql` from `src/content/` |
 
 ## What's here
 
-- **Pages:** Home · About Us · Services · Education (+ 3 class pages) · Career Awareness · AI News · FAQs · Contact. Routes keep the original Wix slugs (`/about-7`, `/contact-8`, `/innovation` …).
+- **Pages:** Home · About Us · Services · Education (+ 3 class pages) · Career Awareness · Past Speakers · AI News · FAQs · Contact · Admin (signed-in admins only). Routes keep the original Wix slugs (`/about-7`, `/contact-8`, `/innovation` …).
 - **Design:** the handoff's palette, Sora / Space Grotesk / Playfair, pill nav and buttons, brush underline, striped placeholders, ink + red duotone, Deep Brick footer — extended to every page. Extensions are catalogued in `docs/DESIGN_ADDENDUM.md`.
 - **Content:** every string lives in `src/content/` and is verified verbatim against the live site.
 
@@ -28,6 +30,7 @@ npm run preview    # serve the production build
 | File | For |
 | --- | --- |
 | `docs/TBD_REGISTER.md` | Everything marked TBD + open decisions (**start here**) |
+| `docs/ADMIN.md` | Admin login, editing the latest event and news, Supabase setup |
 | `docs/DESIGN_ADDENDUM.md` | New styles beyond the handoff |
 | `docs/CONTENT_INVENTORY.md` | Verbatim copy, links, and image provenance for every page |
 | `docs/ARCHITECTURE.md` | Folder map, routes, how to edit/add things |

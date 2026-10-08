@@ -1,5 +1,7 @@
 // Generates web-ready media in public/media from the raw originals in source-assets/.
-// Run: npm run media   (raw originals are never modified)
+// Run: npm run media              (everything)
+//      npm run media -- rail/     (only outputs whose path starts with that prefix)
+// Raw originals are never modified.
 import sharp from 'sharp';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -27,6 +29,14 @@ const jobs = [
   { in: 'education/class-llms-neurotechnology.jpg', out: 'education/llms-wide.webp', width: 1000 },
   { in: 'education/class-skills-digital-brain-interface.jpg', out: 'education/skills-wide.webp', width: 1000 },
   { in: 'education/class-tools-made-by-wix.jpg', out: 'education/tools-wide.webp', width: 1000 },
+
+  // home rail — photographs supplied for the hero gallery (tinted in CSS, see .tone--*)
+  { in: 'education/pexels-yankrukov-7693222.jpg', out: 'rail/desk-charts.webp', width: 720 },
+  { in: 'education/pexels-mikhail-nilov-8851457.jpg', out: 'rail/lab-team.webp', width: 800 },
+  { in: 'education/pexels-holyson-h-2154634702-34357079.jpg', out: 'rail/white-car.webp', width: 720 },
+  { in: 'education/bernd-dittrich-Sp67cxbTHZ0-unsplash.jpg', out: 'rail/vibe-coding.webp', width: 800 },
+  { in: 'education/skynews-ai-will-smith-spaghetti_7004388.jpg', out: 'rail/ai-spaghetti.webp', width: 768 },
+  { in: 'education/usgs-Knh_5u-ZhJw-unsplash.jpg', out: 'rail/satellite.webp', width: 720, quality: 66 },
 
   // career
   { in: 'career/speaker-christopher-dede.png', out: 'career/christopher-dede.webp', width: 720 },
@@ -57,7 +67,9 @@ async function knockoutWhite(file) {
 
 fs.mkdirSync(OUT, { recursive: true });
 
+const only = process.argv[2];
 for (const j of jobs) {
+  if (only && !j.out.startsWith(only)) continue;
   const src = path.join(SRC, j.in);
   const dst = path.join(OUT, j.out);
   fs.mkdirSync(path.dirname(dst), { recursive: true });

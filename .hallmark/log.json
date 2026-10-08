@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-10-07",
+    "macrostructure": "Narrative Workflow (past-speakers timeline) · admin console (utility surface) — extending the locked handoff system",
+    "theme": "studied-DNA (source: design handoff 2a/1c, locked) + rail tints red/light/dark per the 2a artboard",
+    "enrichment": "none (supplied photos in rail; Discord brand button)",
+    "brief": "AI-Ways Forward · Past Speakers timeline split from Career Awareness, Discord-coloured join pill, Supabase admin login (latest event + news CRUD), rail photos + artboard-faithful tints"
+  },
+  {
+    "date": "2026-10-07",
     "macrostructure": "Split Studio (home) / Long Document (about, education, career) / Index-First (services, news) / Conversational FAQ (faqs)",
     "theme": "studied-DNA (source: design handoff 2a/1c, locked)",
     "enrichment": "none (real imagery + ink/red duotone; handoff gallery rail)",

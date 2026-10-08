@@ -9,12 +9,12 @@ const site = await load('site.js');
 const { about } = await load('about.js');
 const { services } = await load('services.js');
 const edu = await load('education.js');
-const { career } = await load('career.js');
+const { career, pastEvents } = await load('career.js');
 const { news } = await load('news.js');
 const { faqs, contactPage } = await load('faq-contact.js');
 
 // keys that hold routes, URLs, media paths or design-handoff copy — not original page text
-const SKIP = new Set(['to', 'href', 'photo', 'image', 'alt', 'teaser', 'phoneHref', 'emailHref', 'discordHref', 'youtubeHref', 'punch', 'modules', 'kind', 'crumb', 'crumbParent', 'suspect', 'tba']);
+const SKIP = new Set(['to', 'href', 'photo', 'image', 'alt', 'teaser', 'phoneHref', 'emailHref', 'discordHref', 'youtubeHref', 'punch', 'modules', 'kind', 'crumb', 'crumbParent', 'suspect', 'tba', 'id', 'date', 'alsoActiveOn']);
 
 function collect(v, out = []) {
   if (typeof v === 'string') out.push(v);
@@ -38,7 +38,8 @@ const pages = {
   '/llms-ai-models': collect(edu.classPages['llms-ai-models']),
   '/ai-tools-applications': collect(edu.classPages['ai-tools-applications']),
   '/practical-ai-skills': collect(edu.classPages['practical-ai-skills']),
-  '/career-awareness': collect(career),
+  // Dede's copy now renders on /past-speakers, but the live Wix Career Awareness page still carries it
+  '/career-awareness': [...collect(career), ...collect(pastEvents)],
   '/innovation': collect(news),
   '/faqs': collect(faqs),
   // "Your Name" / "Your Message" are input placeholders (HTML attributes, not text) — confirmed against the live DOM.

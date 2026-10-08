@@ -5,12 +5,14 @@ import ServiceIndex from '../components/ServiceIndex.jsx';
 import StatementBand from '../components/StatementBand.jsx';
 import NewsRow from '../components/NewsRow.jsx';
 import usePageTitle from '../hooks/usePageTitle.js';
+import { useArticles } from '../lib/content.js';
 import { home, cta, audiencePill, contact } from '../content/site.js';
 import { services } from '../content/services.js';
 import { news } from '../content/news.js';
 
 export default function Home() {
   usePageTitle('');
+  const articles = useArticles();
 
   return (
     <>
@@ -63,8 +65,8 @@ export default function Home() {
             <More to="/innovation" />
           </div>
           <div className="home-news__list">
-            {news.items.slice(0, 3).map((item) => (
-              <NewsRow item={item} key={item.href} />
+            {articles.slice(0, 3).map((item) => (
+              <NewsRow item={item} key={item.id} />
             ))}
           </div>
         </div>

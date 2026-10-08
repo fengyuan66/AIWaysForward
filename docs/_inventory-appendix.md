@@ -32,6 +32,12 @@ All downloaded at full resolution to `source-assets/` (untouched). Web-ready cop
 | `education/class-skills-digital-brain-interface.jpg` | `489a2c8c728e4d4786747253c728fd65.jpg` | Education → Practical AI Skills card | "Digital Brain Interface" | |
 | `career/speaker-christopher-dede.png` | `fce4a0_f56de934e2614e858a4e021f2a19c0f9~mv2.png` | Career Awareness | "image.png" | |
 | `career/speaker-tba.png` | `fce4a0_c38392a6001a49bf9a032aaee4685d8a~mv2.png` | Career Awareness (×2, "To Be Announced") | "image.png" | Generic silhouette. |
+| `education/pexels-yankrukov-7693222.jpg` | — (supplied by the client, Oct 2026) | Home rail → `rail/desk-charts.webp` | — | Hands pointing at a printed spreadsheet beside a laptop. Pexels — Yan Krukov (per filename). |
+| `education/pexels-mikhail-nilov-8851457.jpg` | — (supplied) | Home rail → `rail/lab-team.webp` | — | Three researchers at a monitor. Pexels — Mikhail Nilov. |
+| `education/pexels-holyson-h-2154634702-34357079.jpg` | — (supplied) | Home rail → `rail/white-car.webp` | — | White car, headlight in focus. Pexels — Holyson H. |
+| `education/bernd-dittrich-Sp67cxbTHZ0-unsplash.jpg` | — (supplied) | Home rail → `rail/vibe-coding.webp` | — | Terminal screen: "Claude Code / Vibe Coding" ASCII art. Unsplash — Bernd Dittrich. |
+| `education/skynews-ai-will-smith-spaghetti_7004388.jpg` | — (supplied) | Home rail → `rail/ai-spaghetti.webp` | — | Still from a Sky News piece on AI video. 768 px wide — the smallest rail source; used at native size. Check reuse rights with Sky News. |
+| `education/usgs-Knh_5u-ZhJw-unsplash.jpg` | — (supplied) | Home rail → `rail/satellite.webp` | — | Satellite image (USGS, via Unsplash). |
 | `news/dom-01.png … dom-09.png` | `fce4a0_610a2b53…`, `0a2fb3e9…`, `7d78e428…`, `422de07d…`, `91f23b26…`, `0b9a4d68…`, `04c9aaa4…`, `5b93df6e…`, `71d5886f…` (all `~mv2.png`) | News (article order 1–9) | "image.png" | Publisher thumbnails, ~300 px wide — displayed at native size; they will look soft on high-DPI screens. |
 | `classes/hero-texture.jpg` | `a3c153_a0c884d86e064a5ba8e7cc5f990e2f8e~mv2.jpg` | All three class sub-pages (hero) | "" | Wix template stock (aerial ice/sand). Kept as the sub-page hero because the original used it. |
 | `classes/grid-1.jpg … grid-6.jpg` | `a3c153_608f6162…`, `ec8e183c…`, `29ef14be…`, `41602b53…`, `e34864e8…`, `d4bce080…` (all `~mv2.jpg`) | Template "Service Name" blocks | "" (originals: `11062b_fd5c21…`, `noah-boyer-…-unsplash`, `sumner-mahaffey-…-unsplash`, `matt-artz-…-unsplash copy`, `hasan-almasi-…-unsplash Copy_j`, `olga-o-…-unsplash`) | Unrelated Wix/Unsplash stock (sand, shoreline, quartz). Archived, not shown. |
@@ -41,6 +47,7 @@ All downloaded at full resolution to `source-assets/` (untouched). Web-ready cop
 | Original | Why not carried |
 | --- | --- |
 | "Powered and secured by Wix" (footer, every page except Home) | Platform attribution; no longer true. Original footer line read "© 2026 by J. Yang. Powered and secured by Wix". |
-| Wix member "Log In" icon behaviour | No auth backend exists. UI is present and marked **TBD**. |
+| Wix member "Log In" icon behaviour | Replaced by the admin sign-in (Supabase, see `docs/ADMIN.md`). Inert and marked **TBD** until a project is connected. |
+| Career Awareness "Join Meeting" button for Christopher Dede | The Sept 26 meeting is over. The entry moved to `/past-speakers` without the button. |
 | Wix form submission | No backend. Forms compose an email to the director until an endpoint is chosen. Marked **TBD**. |
 | Page `<title>` suffix "Mysite" | Wix default placeholder; replaced with "AI-Ways Forward". |

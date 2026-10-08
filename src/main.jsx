@@ -13,11 +13,14 @@ import './styles/components.css';
 import './styles/pages.css';
 
 import App from './App.jsx';
+import AuthProvider from './auth/AuthProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>
+        <App />
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );

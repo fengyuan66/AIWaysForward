@@ -1,21 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import Button from './Button.jsx';
-import Tbd from './Tbd.jsx';
+import AuthControl from './AuthControl.jsx';
+import DiscordIcon from './DiscordIcon.jsx';
 import { nav, cta, contact, siteName } from '../content/site.js';
 
-// Log In: the original Wix site had a members icon here. No auth exists yet → inert, marked TBD.
-function LoginPill() {
+// "Join the Discord" wears Discord's own blurple and mark, so it reads as the way into the server.
+function DiscordButton() {
   return (
-    <button
-      type="button"
-      className="btn btn--sm btn--ghost nav__login"
-      aria-disabled="true"
-      onClick={(e) => e.preventDefault()}
-      title="Member login — TBD"
-    >
-      {cta.login} <Tbd />
-    </button>
+    <Button size="sm" variant="discord" dot={false} href={contact.discordHref} external>
+      <DiscordIcon />
+      {cta.joinDiscord}
+    </Button>
   );
 }
 
@@ -23,6 +19,8 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   const btnRef = useRef(null);
+  // a sub-page keeps its parent's link lit (e.g. /past-speakers under Career Awareness)
+  const isParent = (item) => Boolean(item.alsoActiveOn?.includes(pathname));
 
   useEffect(() => setOpen(false), [pathname]);
 
@@ -49,7 +47,7 @@ export default function Nav() {
           <ul className="nav__links">
             {nav.map((item) => (
               <li key={item.to}>
-                <NavLink to={item.to} end={item.to === '/'} className="nav__link" data-text={item.label}>
+                <NavLink to={item.to} end={item.to === '/'} className={`nav__link${isParent(item) ? ' is-parent' : ''}`} data-text={item.label}>
                   {item.label}
                 </NavLink>
               </li>
@@ -58,10 +56,8 @@ export default function Nav() {
         </nav>
 
         <div className="nav__actions">
-          <LoginPill />
-          <Button size="sm" dot={false} href={contact.discordHref} external>
-            {cta.joinDiscord}
-          </Button>
+          <AuthControl />
+          <DiscordButton />
         </div>
 
         <button
@@ -81,17 +77,15 @@ export default function Nav() {
           <ul className="sheet__links">
             {nav.map((item) => (
               <li key={item.to}>
-                <NavLink to={item.to} end={item.to === '/'} className="sheet__link">
+                <NavLink to={item.to} end={item.to === '/'} className={`sheet__link${isParent(item) ? ' is-parent' : ''}`}>
                   {item.label}
                 </NavLink>
               </li>
             ))}
           </ul>
           <div className="sheet__actions">
-            <LoginPill />
-            <Button size="sm" dot={false} href={contact.discordHref} external>
-              {cta.joinDiscord}
-            </Button>
+            <AuthControl />
+            <DiscordButton />
           </div>
         </div>
       </div>

@@ -1,22 +1,44 @@
 import PageHead from '../components/PageHead.jsx';
-import Button from '../components/Button.jsx';
+import Button, { More } from '../components/Button.jsx';
+import Rich from '../components/Rich.jsx';
+import AdminShortcut from '../components/AdminShortcut.jsx';
 import usePageTitle from '../hooks/usePageTitle.js';
+import { useUpcomingEvents } from '../lib/content.js';
+import { safeSrc } from '../lib/format.js';
 import { career } from '../content/career.js';
 
-// Renders a paragraph made of strings and { href, text } link segments (original inline links preserved).
-function Segments({ parts }) {
-  return parts.map((part, i) =>
-    typeof part === 'string' ? (
-      <span key={i}>{part}</span>
-    ) : (
-      <a key={i} href={part.href} target="_blank" rel="noopener noreferrer">{part.text}</a>
-    ),
+// The latest event, entered by an admin (docs/ADMIN.md). Same speaker block the page has always used.
+function Feature({ event }) {
+  return (
+    <article className="speaker">
+      <figure className="speaker__photo">
+        <img src={safeSrc(event.photo) ?? career.slots[0].photo} alt={event.alt} width="622" height="685" loading="eager" />
+      </figure>
+      <div className="speaker__body">
+        <h2 className="speaker__name">{event.name}</h2>
+        {event.talk && <p className="speaker__talk">{event.talk}</p>}
+        {event.when && <p className="speaker__when">{event.when}</p>}
+        {event.bio.length > 0 && (
+          <div className="speaker__bio prose">
+            {event.bio.map((para, i) => (
+              <p key={i}><Rich value={para} /></p>
+            ))}
+          </div>
+        )}
+        {event.join && (
+          <div className="speaker__join">
+            <Button href={event.join.href} external>{event.join.label}</Button>
+          </div>
+        )}
+        {event.note && <p className="speaker__note"><Rich value={event.note} /></p>}
+      </div>
+    </article>
   );
 }
 
 export default function Career() {
   usePageTitle('Career Awareness');
-  const [feature, ...tba] = career.speakers;
+  const upcoming = useUpcomingEvents();
   const [lede, ...rest] = career.paragraphs;
 
   return (
@@ -25,34 +47,24 @@ export default function Career() {
 
       <section className="section section--flush-top">
         <div className="wrap">
-          <article className="speaker">
-            <figure className="speaker__photo">
-              <img src={feature.photo} alt={feature.alt} width="622" height="685" loading="eager" />
-            </figure>
-            <div className="speaker__body">
-              <h2 className="speaker__name">{feature.name}</h2>
-              <p className="speaker__talk">{feature.talk}</p>
-              <p className="speaker__when">{feature.when}</p>
-              <div className="speaker__bio prose">
-                {feature.bio.map((parts, i) => (
-                  <p key={i}><Segments parts={parts} /></p>
-                ))}
-              </div>
-              <div className="speaker__join">
-                <Button href={feature.join.href} external>{feature.join.label}</Button>
-              </div>
-              <p className="speaker__note"><Segments parts={feature.note} /></p>
-            </div>
-          </article>
+          <AdminShortcut to="/admin#events">Edit events</AdminShortcut>
+
+          {upcoming.map((event) => (
+            <Feature event={event} key={event.id} />
+          ))}
 
           <ul className="tba">
-            {tba.map((s, i) => (
+            {career.slots.map((s, i) => (
               <li className="tba__item" key={i}>
                 <img src={s.photo} alt={s.alt} width="480" height="480" loading="lazy" />
                 <h2 className="tba__name">{s.name}</h2>
               </li>
             ))}
           </ul>
+
+          <p className="career__past">
+            <More to="/past-speakers">Past Speakers</More>
+          </p>
         </div>
       </section>
 

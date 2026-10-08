@@ -30,6 +30,7 @@ The design system in `AI Ways Forward redesign_System/design_handoff_homepage_2a
 | `--text-statement` | `clamp(2.5rem, 0.8rem + 7.4vw, 7rem)` | The tagline band. |
 | `--text-lede` | `clamp(1.1875rem, 1.05rem + .6vw, 1.5rem)` | Opening paragraphs of long-form pages. |
 | `--z-sheet`, `--z-nav` | 20, 30 | Named layering scale. |
+| `--color-discord`, `--color-discord-hover` | `#5865F2`, `#4752C4` | Discord's own blurple, used only on the header's "Join the Discord" pill (white on blurple 4.6 : 1, on hover 6.4 : 1). The one third-party brand colour in the system. |
 | `--ease-out`, `--dur-short/med/long` | `cubic-bezier(.22,1,.36,1)`, 150 / 320 / 640 ms | Short = the handoff's 150ms hover. |
 
 ## 3. New elements (and the rule each follows)
@@ -72,21 +73,34 @@ The design system in `AI Ways Forward redesign_System/design_handoff_homepage_2a
 
 **Rail pause** — a small white pill "Pause / Play" at the rail's bottom-left (WCAG 2.2.2: moving content > 5s must be pausable without a pointer). Hidden when `prefers-reduced-motion`.
 
+**Rail tints** — `.tone--red`, `.tone--light`, `.tone--dark`. The 2a artboard's rail tiles come in three hues (Arrow Red, paper-light, Ink-dark) in a fixed order — column 1: light · red · light · dark, column 2: light · dark · light · red — so no two tiles of the same hue touch. Every rail tile is now a real photograph tinted in the hue its artboard slot has, and one extra tile closes each column (L R L D **R**, L D L R **D**) so the loop wraps without repeating a hue. Each tint is built from tokens only: the photo is greyscaled and re-curved, `::before` imposes the tile's hue and saturation with `mix-blend-mode: color` (so the photo keeps its own light and shade), `::after` multiplies the highlights down. Red = `--color-red` over `--color-brick`; dark = `--color-charcoal` over `--color-ink`; light = `--color-rule-strong` over `--color-ground`. Each photo sits in the hue that suits its brightness (pale photos in light slots, dark renders in dark slots). Hover still reveals the true colours (320ms). The plain `.tone` (class cards, class-page hero) is unchanged.
+
+**Join the Discord pill** — `.btn--discord` + `DiscordIcon`. Discord blurple fill, white text, the Discord mark (Simple Icons, CC0) at 18px, same 13px / 9×16 compact pill as its neighbour. Hover → `--color-discord-hover`. Header and mobile sheet only; the hero's "Join our Discord!" stays Arrow Red (TBD register, T).
+
+**Account pill** — `AuthControl`. One compact pill beside the Discord pill, so the nav width is unchanged: *Log In* (white ghost) for visitors → *Log Out* for a signed-in non-admin → *Admin* (Ink fill, the segmented pill's selected look) for an admin. With no backend it stays inert with a TBD chip.
+
+**Log In dialog** — `.dialog`. A native `<dialog>`: white card, 1px `--color-rule`, radius 4px, **no shadow**, Ink at 55% for the backdrop. Same field and pill-button vocabulary as the FAQ and Contact forms. One error line ("That email and password don't match an account.") in the reserved `.form__error` slot.
+
+**Past-speakers timeline** — `.tl`. Year in Sora 800 at the H2 size; beneath it a 1px `--color-rule-strong` rule down the left with a **hollow Arrow Red ring** per event (hollow = it has happened). The date line (Sora 600, Arrow Red) sits *above* the name in the content column — never a date-left / content-right split. Each entry: 160px square portrait (120px on phones, radius 4px), name in Playfair 600 (the speaker-name slot), talk in Sora 700, and the bio in a native `<details>` with the accordion's plus mark. The nav keeps *Career Awareness* lit on this page.
+
+**Admin console** — `.admin__*`. Flat, hairline-ruled lists (the same rows as the news ledger), a white form card with a two-column grid from 768px, pill buttons, "Upcoming" chip in Arrow Red / "Past" chip in grey, and a two-step *Delete* (the pill turns Arrow Red and reads "Confirm delete"). Admin-only shortcut pills (`.admin-shortcut`, "Edit events" / "New article") appear on Career Awareness, Past Speakers and AI News for admins and are not rendered for anyone else.
+
 ## 4. Handoff values adjusted (and why)
 
 | Handoff | Changed to | Reason |
 | --- | --- | --- |
 | Light stripe label `#6B6560` | `--color-muted` (`#4A4744`) | 4.1 : 1 on the stripe fails 4.5 : 1; muted gives 6.2 : 1. |
-| Nav link gap 28px (1180px artboard) | 22px, 28px ≥ 1216px | With six links (Career Awareness added) the nav needs the tighter gap between 1152 and 1216px. |
+| Nav link gap 28px (1180px artboard) | 18px from 1152px, 24px from 1216px, 28px from 1280px | Six links, the Log In pill (with its TBD chip) and the Discord icon need ~1062px; measured at 1152, 1216 and 1280 so the actions never poke into the gutter. |
 | Wordmark in live Playfair + CSS arrow | Client's logo PNG | README: "replace with the client's original asset if available". |
 | H1 size 76px fixed | `clamp(46px … 76px)` | Handoff: "Responsive: not designed… H1 clamps to ~48px". |
 | Hero rail `max-height` 640px | 640px ≥ 900px viewport, 360px below | Handoff suggestion (~360px). |
-| Tile "red / light / dark" fills | Real imagery in ink+red duotone where we own images; stripe placeholders (TBD) otherwise | Handoff: duotone the set; stripes are placeholders. |
+| Tile "red / light / dark" fills | Real photographs tinted red / light / dark in the artboard's order (see *Rail tints*) | The handoff's stripes were placeholders; the supplied photos replaced them. Striped tiles remain only for the class-page module slots (TBD). |
 
 ## 5. Known system-level deviations from Hallmark's defaults (deliberate — the handoff wins)
 
 - **Pill-shaped buttons and nav actions**, **zero-chroma ink `#141414`**, **pure white `#FFFFFF` for pills, panels and fields** (the page *ground* is `#F4F2EE`, never white), and the **wordmark-left / links / pill-actions nav** are all specified by the handoff. They are kept.
 - The red duotone on the hero rail means accent covers well over 5% of the first viewport. That is the handoff's own art direction (it specifies red tiles and the ink + red duotone).
+- **Discord blurple `#5865F2`** on one pill is a third-party brand colour requested for the Discord button; it is not part of the handoff palette.
 - Some handoff measurements are off a 4px grid (22px hero gap, 26px top padding, 14px, 7px pill padding). They are lifted from the handoff as written.
 
 ## 6. Motion

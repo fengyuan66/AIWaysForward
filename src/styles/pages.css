@@ -17,6 +17,7 @@
   margin-bottom: var(--space-md);
 }
 .crumbs a { color: var(--color-muted-soft); }
+.crumbs a, .crumbs [aria-current='page'] { white-space: nowrap; } /* a crumb breaks between items, never inside one */
 .crumbs a:hover { color: var(--color-red); }
 .crumbs [aria-current='page'] { color: var(--color-ink); }
 
@@ -78,8 +79,9 @@
 .rail__col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; will-change: transform; }
 .rail__track { display: flex; flex-direction: column; gap: 16px; padding-bottom: 16px; }
 .rail__tile { flex: none; margin: 0; border-radius: var(--radius-tile); }
-.rail__col--up { animation: rail-up 76s linear infinite; }
-.rail__col--down { animation: rail-down 84s linear infinite; animation-delay: -18s; }
+/* --rail-dur is set per column in Rail.jsx from its height, so the drift speed stays ~12px/s whatever the tile count */
+.rail__col--up { animation: rail-up var(--rail-dur, 76s) linear infinite; }
+.rail__col--down { animation: rail-down var(--rail-dur, 84s) linear infinite; animation-delay: -18s; }
 .rail:hover .rail__col, .rail.is-paused .rail__col { animation-play-state: paused; }
 @keyframes rail-up { to { transform: translateY(-50%); } }
 @keyframes rail-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
@@ -205,11 +207,78 @@
   .speaker { grid-template-columns: 330px minmax(0, 1fr); gap: var(--space-xl); }
   .speaker__photo { position: sticky; top: var(--space-lg); }
 }
-.tba { list-style: none; margin: var(--space-2xl) 0 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md) var(--space-xl); }
+.speaker + .speaker { margin-top: var(--space-2xl); }
+.speaker + .tba { margin-top: var(--space-2xl); }
+.career__past { margin-top: var(--space-xl); }
+.admin-shortcut { display: flex; justify-content: flex-end; margin-bottom: var(--space-md); }
+.tba { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md) var(--space-xl); }
 .tba__item { display: flex; align-items: center; gap: var(--space-md); border-top: 1px solid var(--color-rule); padding-top: var(--space-md); }
 .tba__item img { flex: none; width: 96px; height: 96px; border-radius: var(--radius-card); object-fit: cover; }
 .tba__name { font: 700 1.375rem / 1.2 var(--font-heading); letter-spacing: -0.015em; }
 @media (min-width: 40rem) { .tba { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ── Past speakers · timeline (addendum) ──────────────────────
+   A year heading, then a hairline rule running down the left with a ring marker per event (hollow = it has happened).
+   The date line sits above the name, in the same column as the content — no label-left / content-right split. */
+.tl { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2xl); }
+.tl__yearhead { font: 800 var(--text-h2) / 1 var(--font-heading); letter-spacing: -0.04em; margin-bottom: var(--space-lg); }
+.tl__events { --tl-pad: clamp(24px, 4vw, 48px); list-style: none; margin: 0 0 0 7px; padding: 0 0 0 var(--tl-pad); border-left: 1px solid var(--color-rule-strong); display: grid; gap: var(--space-2xl); }
+.tl__event { position: relative; }
+.tl__dot {
+  position: absolute; top: 3px; left: calc(-1 * var(--tl-pad) - 8px);
+  width: 15px; height: 15px; border-radius: var(--radius-pill);
+  background: var(--color-ground); border: 2px solid var(--color-red);
+}
+.tl__when { font: 600 var(--text-small) / 1.3 var(--font-heading); color: var(--color-red); margin-bottom: var(--space-md); }
+.tl__card { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md); align-items: start; }
+.tl__photo { width: 120px; height: 120px; object-fit: cover; border-radius: var(--radius-card); background: var(--color-rule); }
+.tl__name { font: 600 clamp(2rem, 1.3rem + 2.4vw, 3rem) / 1 var(--font-display); letter-spacing: -0.01em; }
+.tl__talk { font: 700 var(--text-h3) / 1.3 var(--font-heading); color: var(--color-ink); margin-top: var(--space-sm); max-width: 36ch; letter-spacing: -0.01em; text-wrap: balance; }
+.tl__bio { margin-top: var(--space-md); max-width: var(--measure); border-top: 1px solid var(--color-rule); }
+.tl__summary {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-md);
+  padding-block: var(--space-sm); cursor: pointer; list-style: none;
+  font: 700 var(--text-small) / 1.2 var(--font-heading); color: var(--color-ink);
+  transition: color var(--dur-short) ease;
+}
+.tl__summary::-webkit-details-marker { display: none; }
+.tl__summary:hover { color: var(--color-red); }
+.tl__bio[open] .acc__mark::after { transform: rotate(0deg); }
+.tl__bio .prose { padding-bottom: var(--space-md); font-size: 1rem; line-height: 1.65; }
+.tl__bio a, .tl__note a { text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.tl__note { margin-top: var(--space-sm); max-width: 58ch; font-size: var(--text-small); color: var(--color-muted); }
+@media (min-width: 40rem) {
+  .tl__card { grid-template-columns: 160px minmax(0, 1fr); gap: var(--space-lg); }
+  .tl__photo { width: 160px; height: 160px; }
+}
+
+/* ── Admin console (addendum) ─────────────────────────────── */
+.admin__who { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm) var(--space-md); margin-top: var(--space-lg); font-size: var(--text-small); color: var(--color-muted); }
+.admin__who p { margin: 0; }
+.admin__who strong { color: var(--color-ink); font-weight: 600; overflow-wrap: anywhere; }
+.admin__section { border-top: 1px solid var(--color-rule); }
+.admin__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-sm) var(--space-md); }
+.admin__list { list-style: none; margin: var(--space-md) 0 0; padding: 0; border-bottom: 1px solid var(--color-rule); }
+.admin__row { display: grid; gap: var(--space-sm); padding-block: var(--space-md); border-top: 1px solid var(--color-rule); }
+.admin__title { margin: 0; font: 700 1.0625rem / 1.3 var(--font-heading); letter-spacing: -0.01em; color: var(--color-ink); overflow-wrap: anywhere; }
+.admin__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px var(--space-sm); margin: 2px 0 0; font-size: 0.875rem; color: var(--color-muted); }
+.admin__status {
+  font: 700 var(--text-micro) / 1 var(--font-heading); letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 4px 8px; border: 1px solid var(--color-rule-strong); border-radius: 2px; color: var(--color-muted);
+}
+.admin__status--upcoming { color: var(--color-red); border-color: var(--color-red); }
+.admin__actions { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.admin__empty { padding-block: var(--space-md); border-top: 1px solid var(--color-rule); color: var(--color-muted); max-width: 62ch; }
+.admin__form { margin-top: var(--space-md); background: var(--color-surface); border: 1px solid var(--color-rule); border-radius: var(--radius-card); padding: clamp(20px, 3vw, 32px); }
+.admin__form-title { font: 800 1.625rem / 1.15 var(--font-heading); letter-spacing: -0.02em; }
+.admin__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-md); }
+.admin__image { display: flex; align-items: center; gap: var(--space-md); }
+.admin__image img { flex: none; width: 96px; height: 96px; object-fit: cover; border-radius: var(--radius-card); background: var(--color-rule); }
+@media (min-width: 48rem) {
+  .admin__row { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--space-lg); }
+  .admin__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .field--wide { grid-column: 1 / -1; }
+}
 
 /* ── News ─────────────────────────────────────────────────── */
 .news-grid { display: grid; grid-template-columns: minmax(0, 1fr); column-gap: var(--space-xl); border-bottom: 1px solid var(--color-rule); }

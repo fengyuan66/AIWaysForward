@@ -1,0 +1,123 @@
+/* Hallmark · genre: editorial · macrostructure: Split Studio (home) · Long Document (about) · Index-First (services, news)
+ *   · Conversational FAQ (faqs) · theme: studied-DNA — AI-Ways Forward handoff 2a/1c (locked)
+ *   · enrichment: none (real imagery + ink/red duotone) · nav: handoff pill nav (N1b family, locked by DS) · footer: handoff Deep Brick
+ * Pre-emit critique: P5 H4 E4 S4 R4 V4
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--space-xl);
+}
+
+body {
+  margin: 0;
+  overflow-x: clip;
+  min-height: 100dvh;
+  background: var(--color-ground);
+  color: var(--color-charcoal);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root { min-height: 100dvh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-heading);
+  color: var(--color-ink);
+  font-style: normal;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+h1 { font-size: var(--text-h1); line-height: 1; font-weight: 700; letter-spacing: -0.04em; text-wrap: balance; }
+h2 { font-size: var(--text-h2); line-height: 1.1; font-weight: 800; letter-spacing: -0.025em; text-wrap: balance; }
+h3 { font-size: var(--text-h3); line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--color-red); text-decoration: none; transition: color var(--dur-short) ease; }
+a:hover { color: var(--color-brick); }
+
+::selection { background: var(--color-red); color: var(--color-surface); }
+
+/* Focus — instant, never animated. Handoff: 2px Arrow Red, 2px offset. */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  transition: none;
+}
+.on-dark :focus-visible, .band :focus-visible, .site-foot :focus-visible { outline-color: var(--color-surface); }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute; left: var(--space-md); top: -100px;
+  z-index: calc(var(--z-nav) + 1);
+  background: var(--color-ink); color: var(--color-surface);
+  font: 600 0.875rem var(--font-heading);
+  padding: var(--space-sm) var(--space-md); border-radius: var(--radius-pill);
+}
+.skip-link:focus { top: var(--space-sm); color: var(--color-surface); }
+
+/* ── Layout primitives ─────────────────────────────────────── */
+.wrap {
+  width: 100%;
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section { padding-block: var(--space-xl); }
+@media (min-width: 60rem) { .section { padding-block: var(--space-2xl); } }
+.section--paper { background: var(--color-paper); }
+.section--flush-top { padding-top: 0; }
+
+/* H1 + handoff brush underline (9px, radius 999 999 40% 40%) */
+.brush {
+  display: block;
+  height: 9px;
+  width: min(270px, 62%);
+  margin-top: var(--space-2xs);
+  background: var(--color-red);
+  border-radius: 999px 999px 40% 40%;
+  opacity: 0.9;
+}
+
+/* Labels / eyebrows — Sora 500, 0.16em, uppercase (handoff 1c). Used sparingly, always stacked above their heading. */
+.label {
+  font: 500 var(--text-label) / 1.2 var(--font-heading);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted-soft);
+}
+.label--red { color: var(--color-red); }
+
+.lede {
+  font-size: var(--text-lede);
+  line-height: 1.5;
+  color: var(--color-ink);
+  letter-spacing: -0.005em;
+}
+
+.prose p + p { margin-top: 1.25em; }
+.prose a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.prose { max-width: var(--measure); }
+
+.rule { border: 0; border-top: 1px solid var(--color-rule); margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}

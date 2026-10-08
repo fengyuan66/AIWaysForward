@@ -1,0 +1,89 @@
+/* Hallmark · tokens for AI-Ways Forward
+ * Source of truth: "AI Ways Forward redesign_System/design_handoff_homepage_2a" (sections 2a + 1c).
+ * Every value below is either lifted from that handoff or is flagged "addendum" and documented in
+ * docs/DESIGN_ADDENDUM.md. Component CSS must reference these tokens by name — no inline hex / font names.
+ */
+:root {
+  /* ── Colour · handoff palette ─────────────────────────────── */
+  --color-ink: #141414;          /* Ink — headings, ink buttons, dark bands */
+  --color-charcoal: #3c3936;     /* Charcoal — body copy */
+  --color-red: #a33328;          /* Arrow Red — accent, primary action */
+  --color-brick: #6e2622;        /* Deep Brick — hover, footer ground */
+  --color-paper: #f1efec;        /* Paper — alt section ground */
+  --color-rule: #e0dcd5;         /* Rule — hairlines, pill borders */
+
+  --color-ground: #f4f2ee;       /* page ground */
+  --color-strip: #edeae5;        /* top strip */
+  --color-rule-strong: #c9c5be;  /* dotted strip border */
+  --color-surface: #ffffff;      /* pills, form fields, panels */
+  --color-muted: #4a4744;        /* secondary text */
+  --color-muted-soft: #6b6560;   /* labels, captions */
+  --color-nav: #33312f;          /* nav link text */
+  --color-footer-text: #f0dcd8;
+  --color-footer-soft: #e8cfcb;
+
+  /* placeholder tiles (handoff: 135° repeating, 8px) */
+  --color-stripe-light-a: #e3dfd8;
+  --color-stripe-light-b: #dad5cd;
+  --color-stripe-red-a: #8e2c22;
+  --color-stripe-red-b: #a33328;
+  --color-stripe-dark-a: #1f1d1b;
+  --color-stripe-dark-b: #282522;
+  --color-tile-label-light: #6b6560;
+  --color-tile-label-red: #f3d6d1;
+  --color-tile-label-dark: #9a938c;
+
+  /* addendum — used only on dark (Ink) surfaces; both values appear in handoff direction 1b */
+  --color-red-on-dark: #e58d7e;
+  --color-ink-rule: #332f2c;
+  --color-ink-muted: #b8b2ac;
+  --color-ink-soft: #8a837d;
+
+  --color-on-red: var(--color-surface); /* text on Arrow Red fills (7.2:1) */
+  --color-focus: var(--color-red);
+
+  /* ── Type ─────────────────────────────────────────────────── */
+  --font-display: 'Playfair Display', 'Times New Roman', serif;                /* wordmark / person names */
+  --font-heading: 'Sora Variable', 'Sora', system-ui, sans-serif;              /* headings, nav, buttons, labels */
+  --font-body: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif; /* body copy */
+
+  --text-h1: clamp(2.875rem, 1.35rem + 5.9vw, 4.75rem);   /* 76px at desktop */
+  --text-h2: clamp(1.875rem, 1.25rem + 1.9vw, 2.375rem);  /* 38px */
+  --text-h3: clamp(1.1875rem, 1.05rem + 0.5vw, 1.375rem); /* 19–22px */
+  --text-statement: clamp(2.5rem, 0.8rem + 7.4vw, 7rem);  /* addendum: tagline band */
+  --text-lede: clamp(1.1875rem, 1.05rem + 0.6vw, 1.5rem);
+  --text-body: 1.0625rem;                                  /* 17px */
+  --text-small: 0.9375rem;                                 /* 15px */
+  --text-label: 0.75rem;                                   /* 12px uppercase */
+  --text-micro: 0.6875rem;                                 /* 11px */
+
+  /* ── Space · handoff scale 4·8·12·20·32·48·72 ─────────────── */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 72px;
+  --space-3xl: 112px; /* addendum: hero → first section, band rhythm */
+
+  --gutter: clamp(20px, 3.4vw, 36px);
+  --page-max: 1240px;
+  --measure: 64ch;
+
+  /* ── Shape ────────────────────────────────────────────────── */
+  --radius-pill: 999px;
+  --radius-tile: 20px;
+  --radius-card: 4px;
+
+  /* ── Motion ───────────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 150ms;   /* handoff: hover 150ms ease */
+  --dur-med: 320ms;
+  --dur-long: 640ms;
+
+  /* ── Layering ─────────────────────────────────────────────── */
+  --z-sheet: 20;
+  --z-nav: 30;
+}

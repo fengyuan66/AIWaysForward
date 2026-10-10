@@ -11,7 +11,7 @@ export default function StatementBand({ label = 'Understand AI. Adapt to AI. Bui
             const [lead, ...rest] = line.split(' AI.');
             return (
               <li className="band__line" key={line}>
-                {lead} <b>AI.</b>
+                {lead} <b>AI<span className="band__dot">.</span></b>
                 {rest.join('')}
               </li>
             );

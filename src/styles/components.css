@@ -306,6 +306,8 @@ textarea.field__control { min-height: 9rem; resize: vertical; }
   overflow-wrap: anywhere; min-width: 0;
 }
 .band__line b { font-weight: 800; color: var(--color-red-on-dark); }
+/* the tight tracking pushed the full stop into the I; give it a little room back */
+.band__dot { margin-left: 0.05em; }
 @media (min-width: 48rem) {
   .band__line:nth-child(2) { padding-left: 7vw; }
   .band__line:nth-child(3) { padding-left: 14vw; }

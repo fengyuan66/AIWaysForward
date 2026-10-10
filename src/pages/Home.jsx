@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import AudiencePill from '../components/AudiencePill.jsx';
 import BrandIcon from '../components/BrandIcon.jsx';
 import Button, { More } from '../components/Button.jsx';
 import Rail from '../components/Rail.jsx';
@@ -7,7 +8,7 @@ import StatementBand from '../components/StatementBand.jsx';
 import NewsRow from '../components/NewsRow.jsx';
 import usePageTitle from '../hooks/usePageTitle.js';
 import { useArticles } from '../lib/content.js';
-import { home, cta, audiencePill, contact } from '../content/site.js';
+import { home, cta, contact } from '../content/site.js';
 import { services } from '../content/services.js';
 import { news } from '../content/news.js';
 
@@ -39,17 +40,7 @@ export default function Home() {
               </Button>
             </div>
 
-            <nav className="pill" aria-label="Explore AI-Ways Forward">
-              <a className="pill__lead" href={contact.youtubeHref} target="_blank" rel="noopener noreferrer">
-                <BrandIcon name="youtube" />
-                {audiencePill.lead}
-              </a>
-              {audiencePill.items.map((item, i) => (
-                <Link key={item.to} to={item.to} className={`pill__item${i === 0 ? ' is-rest' : ''}`}>
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
+            <AudiencePill />
           </div>
 
           <Rail />

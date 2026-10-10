@@ -30,6 +30,7 @@
 .hero__copy > :nth-child(4) { animation-delay: 240ms; }
 .hero__title { display: flex; flex-direction: column; gap: var(--space-2xs); }
 .hero__body { max-width: 450px; font-size: 1.1875rem; line-height: 1.55; color: var(--color-charcoal); }
+.hero__ctas .btn--secondary { border-color: var(--color-rule-strong); }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: var(--space-sm); padding-top: var(--space-2xs); }
 
 @media (min-width: 56.25rem) {
@@ -39,6 +40,7 @@
 
 /* segmented pill: "AI-Ways Forward for… Education | Career Awareness | AI News" */
 .pill {
+  position: relative; isolation: isolate;
   display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px;
   max-width: 100%;
   background: var(--color-surface);
@@ -48,21 +50,28 @@
   font: 500 0.8125rem / 1 var(--font-heading);
 }
 @media (min-width: 40rem) { .pill { border-radius: var(--radius-pill); } }
-.pill__lead { flex: 1 0 100%; padding: 7px 12px 4px; color: var(--color-muted-soft); white-space: nowrap; }
-@media (min-width: 40rem) { .pill__lead { flex: none; padding: 7px 12px; } }
-.pill__lead { display: inline-flex; align-items: center; gap: 8px; color: var(--color-nav); font-weight: 600; }
-.pill__lead:hover, .pill__lead:focus-visible { color: var(--color-ink); }
-.pill__lead .brand-icon { color: #ff0000; }
 .pill__item {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: 8px;
   padding: 7px 13px; border-radius: var(--radius-pill);
   color: var(--color-nav); font-weight: 600; white-space: nowrap;
-  transition: background-color var(--dur-short) ease, color var(--dur-short) ease;
+  transition: color 0.3s ease;
 }
-.pill__item.is-rest { background: var(--color-ink); color: var(--color-surface); }
-.pill__item:hover, .pill__item:focus-visible { background: var(--color-ink); color: var(--color-surface); }
-/* hovering another option hands the filled state over to it */
-.pill:has(.pill__item:hover) .pill__item.is-rest:not(:hover),
-.pill:has(.pill__item:focus-visible) .pill__item.is-rest:not(:focus-visible) { background: transparent; color: var(--color-nav); }
+.pill__item--youtube { padding-left: 12px; }
+.pill__item .brand-icon { color: #ff0000; transition: color 0.3s ease; }
+.pill__item.is-active { color: var(--color-surface); }
+.pill__item.is-active .brand-icon { color: var(--color-surface); }
+/* the sliding indicator: positioned by AudiencePill.jsx, glides between options */
+.pill__thumb {
+  position: absolute; z-index: 0; top: 0; left: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-ink);
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), width 0.4s cubic-bezier(0.65, 0, 0.35, 1),
+    height 0.4s cubic-bezier(0.65, 0, 0.35, 1), background-color 0.3s ease;
+  pointer-events: none;
+}
+.pill__thumb.is-youtube { background: #ff0000; }
+@media (prefers-reduced-motion: reduce) { .pill__thumb, .pill__item, .pill__item .brand-icon { transition: none; } }
 
 /* gallery rail — two columns drifting in opposite directions */
 .rail-wrap { position: relative; margin-bottom: var(--space-lg); }

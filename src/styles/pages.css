@@ -50,6 +50,9 @@
 @media (min-width: 40rem) { .pill { border-radius: var(--radius-pill); } }
 .pill__lead { flex: 1 0 100%; padding: 7px 12px 4px; color: var(--color-muted-soft); white-space: nowrap; }
 @media (min-width: 40rem) { .pill__lead { flex: none; padding: 7px 12px; } }
+.pill__lead { display: inline-flex; align-items: center; gap: 8px; color: var(--color-nav); font-weight: 600; }
+.pill__lead:hover, .pill__lead:focus-visible { color: var(--color-ink); }
+.pill__lead .brand-icon { color: #ff0000; }
 .pill__item {
   padding: 7px 13px; border-radius: var(--radius-pill);
   color: var(--color-nav); font-weight: 600; white-space: nowrap;

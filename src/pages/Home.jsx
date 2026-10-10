@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import BrandIcon from '../components/BrandIcon.jsx';
 import Button, { More } from '../components/Button.jsx';
 import Rail from '../components/Rail.jsx';
 import ServiceIndex from '../components/ServiceIndex.jsx';
@@ -31,12 +32,18 @@ export default function Home() {
             <p className="hero__body">{home.body}</p>
 
             <div className="hero__ctas">
-              <Button variant="primary" href={contact.discordHref} external>{cta.discord}</Button>
-              <Button variant="secondary" href={contact.youtubeHref} external>{cta.youtube}</Button>
+              <Button variant="primary" to="/career-awareness">{cta.register}</Button>
+              <Button variant="secondary" href={contact.discordHref} external>
+                <BrandIcon name="discord" />
+                {cta.discord}
+              </Button>
             </div>
 
-            <nav className="pill" aria-label={audiencePill.lead}>
-              <span className="pill__lead">{audiencePill.lead}</span>
+            <nav className="pill" aria-label="Explore AI-Ways Forward">
+              <a className="pill__lead" href={contact.youtubeHref} target="_blank" rel="noopener noreferrer">
+                <BrandIcon name="youtube" />
+                {audiencePill.lead}
+              </a>
               {audiencePill.items.map((item, i) => (
                 <Link key={item.to} to={item.to} className={`pill__item${i === 0 ? ' is-rest' : ''}`}>
                   {item.label}

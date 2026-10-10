@@ -115,6 +115,8 @@
 .btn--sm.btn--ghost:hover { background: var(--color-ink); color: var(--color-surface); }
 
 /* Discord's own blurple + mark (addendum): the one button that wears a third-party brand colour */
+.brand-icon { width: 1.25em; height: 1.25em; flex: none; }
+.btn .brand-icon--discord { color: var(--color-discord); }
 .btn--discord { background: var(--color-discord); color: var(--color-on-red); }
 .btn--discord:hover { background: var(--color-discord-hover); color: var(--color-on-red); }
 .icon-discord { flex: none; display: block; }

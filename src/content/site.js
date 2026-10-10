@@ -36,15 +36,16 @@ export const tagline = ['Understand AI.', 'Adapt to AI.', 'Build with AI.'];
 
 // Calls to action defined by the design handoff (2a).
 export const cta = {
+  register: 'Register for next event!',
   discord: 'Join our Discord!',
   youtube: 'Watch our YouTube',
   login: 'Log In',
   joinDiscord: 'Join the Discord',
 };
 
-// Segmented pill from the design handoff: "AI-Ways Forward for…"
+// Segmented pill from the design handoff. The lead now links to the YouTube channel (contact.youtubeHref).
 export const audiencePill = {
-  lead: 'AI-Ways Forward for…',
+  lead: 'Watch our YouTube',
   items: [
     { label: 'Education', to: '/education' },
     { label: 'Career Awareness', to: '/career-awareness' },

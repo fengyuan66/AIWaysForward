@@ -9,6 +9,7 @@ import { segmentsToText } from './format.js';
 
 const KEY = 'awf-demo-db';
 const SESSION = 'awf-demo-session';
+const NEWS_UPDATE = '2026-10-28-ai-news';
 
 const iso = (label) => {
   // 'Aug 21st 2026' → '2026-08-21'
@@ -18,6 +19,7 @@ const iso = (label) => {
 };
 
 const seed = () => ({
+  appliedContentUpdates: [NEWS_UPDATE],
   admins: [],
   articles: news.items.map((a, i) => ({
     id: `demo-article-${i + 1}`,
@@ -47,7 +49,25 @@ const seed = () => ({
 
 const read = () => {
   try {
-    return JSON.parse(localStorage.getItem(KEY)) ?? seed();
+    const db = JSON.parse(localStorage.getItem(KEY));
+    if (!db) return seed();
+    // Existing demo browsers retain their old seed in localStorage across reloads.
+    // Apply this release once, preserving edits and subsequent admin deletions.
+    if (!db.appliedContentUpdates?.includes(NEWS_UPDATE)) {
+      const additions = seed().articles.filter((article) =>
+        ['2026-10-28', '2026-10-26'].includes(article.published_on) &&
+        !db.articles.some((existing) => existing.href === article.href),
+      );
+      const firstPosition = Math.min(1, ...db.articles.map((article) => article.position));
+      additions.forEach((article, i) => {
+        article.id = `${NEWS_UPDATE}-${i + 1}`;
+        article.position = firstPosition - additions.length + i;
+      });
+      db.articles.unshift(...additions);
+      db.appliedContentUpdates = [...(db.appliedContentUpdates ?? []), NEWS_UPDATE];
+      write(db);
+    }
+    return db;
   } catch {
     return seed();
   }

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { getClient } from './backend.js';
 import { formatPublished, toParagraphs } from './format.js';
 import { news } from '../content/news.js';
-import { pastEvents } from '../content/career.js';
+import { pastEvents, upcomingEvents } from '../content/career.js';
 
 // ── row → UI shapes (the same shapes the static content already has) ────────────────────────────
 export const toArticle = (r) => ({
@@ -58,14 +58,14 @@ async function loadArticles(sb) {
 }
 export const useArticles = () => useRemote(loadArticles, staticArticles);
 
-// Upcoming: only what an admin has entered (none is a normal state). Past: newest first, bundled Dede as the fallback.
+// Upcoming: admin-entered events, else the bundled next speaker. Past: newest first, bundled Dede as the fallback.
 async function loadUpcoming(sb) {
   const { data, error } = await sb.from('events').select('*').eq('status', 'upcoming').order('event_date', { ascending: true });
-  return error ? null : data.map(toEvent);
+  return !error && data?.length ? data.map(toEvent) : null;
 }
 async function loadPast(sb) {
   const { data, error } = await sb.from('events').select('*').eq('status', 'past').order('event_date', { ascending: false });
   return !error && data?.length ? data.map(toEvent) : null;
 }
-export const useUpcomingEvents = () => useRemote(loadUpcoming, []);
+export const useUpcomingEvents = () => useRemote(loadUpcoming, upcomingEvents);
 export const usePastEvents = () => useRemote(loadPast, pastEvents);

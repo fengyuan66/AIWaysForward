@@ -1,4 +1,5 @@
-// /innovation — "Latest AI News". Verbatim, in the original's reading order.
+// /innovation: "Latest AI News". New reporting first, followed by the original archive.
+// Refreshed October 28, 2026. Headlines, bylines and dates checked against the linked reporting.
 // `authors`: string | [{ text, href? }]. Two original author links pointed at the wrong person
 // (marked `suspect: true`); they are rendered unlinked until the client confirms — see docs/TBD_REGISTER.md.
 
@@ -6,6 +7,38 @@ export const news = {
   title: 'Latest AI News',
   labels: { source: 'Source', authors: 'Author(s)', date: 'Publication Date' },
   items: [
+    {
+      image: '/media/news/google-earnings-2026-10-28.webp',
+      source: 'The Associated Press',
+      authors: [{ text: 'Kaitlyn Huamani' }],
+      date: 'Oct 28th 2026',
+      title: 'Google misses Wall Street expectations, Alphabet stock sinks in early after-hours trading',
+      href: 'https://apnews.com/article/1acf6aff00d4dc084c5243d613307388',
+    },
+    {
+      image: '/media/news/ai-cybersecurity-2026-10-28.webp',
+      source: 'Axios',
+      authors: [{ text: 'Sam Sabin', href: 'https://www.axios.com/authors/ssabin' }],
+      date: 'Oct 28th 2026',
+      title: "AI's cyber scare delivers a Y2K lesson",
+      href: 'https://www.axios.com/2026/10/28/cybersecurity-black-october-ai-hacks',
+    },
+    {
+      image: '/media/news/openai-google-chips-2026-10-28.webp',
+      source: 'Reuters',
+      authors: [{ text: 'Carlos Méndez' }],
+      date: 'Oct 28th 2026',
+      title: "OpenAI plans to buy Google's AI chips, The Information reports",
+      href: 'https://www.aol.com/articles/openai-plans-buy-googles-ai-012329000.html',
+    },
+    {
+      image: '/media/news/anthropic-nonprofits-2026-10-26.webp',
+      source: 'The Associated Press',
+      authors: [{ text: 'Glenn Gamboa' }],
+      date: 'Oct 26th 2026',
+      title: 'Anthropic expands AI support for nonprofits as it files to sell shares to the public',
+      href: 'https://apnews.com/article/e4db0d624495c8224187b3227939dd27',
+    },
     {
       image: '/media/news/1.webp',
       source: 'The New York Times',

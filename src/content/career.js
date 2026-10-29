@@ -22,6 +22,33 @@ export const career = {
   ],
 };
 
+// The next speaker, shown above the "To Be Announced" slots. Used until an admin enters an upcoming event in the
+// console (docs/ADMIN.md); delete this entry once Norah's talk has been moved to Past Speakers.
+// No Join link yet: the Meet link hasn't been sent. Add `join` when it exists. Time is Pacific Time
+// ("PT", not "PST" — daylight saving is still in effect on Oct 31).
+export const upcomingEvents = [
+  {
+    id: 'norah-lorway-2026-10-31',
+    date: '2026-10-31',
+    name: 'Norah Lorway',
+    photo: '/media/career/norah-lorway.webp',
+    alt: 'Norah Lorway',
+    talk: 'AI as a Collaborator in Music, Art, and Healthcare', // drafted from her email's theme, not supplied by her
+    when: 'October 31st, 3 P.M. PT via Google Meet',
+    bio: [
+      [
+        'Dr. Norah Lorway is a composer, software engineer, pianist, and AI researcher. She is Assistant Professor of Electroacoustics at Concordia University, where she directs the Computational Sound Lab, and the founder of ',
+        { href: 'https://beesting.xyz/', text: 'Beesting Labs' },
+        ', a software company building AI, audio, and immersive technologies, including Scorch, a programming language for live-coded music. A recipient of the Canada Council’s Robert Fleming Award for composition, she works at the meeting point of research, creative practice, and technology.',
+      ],
+      [
+        'In her talk, Dr. Lorway will explore AI as a collaborator rather than a replacement, drawing on examples from music, art, and healthcare. She will also touch on ethics and the responsible use of AI.',
+      ],
+    ],
+    note: null,
+  },
+];
+
 // /past-speakers — events that have happened, newest first. Text is the original Career Awareness copy, unchanged.
 // `date` (ISO) is only for ordering/grouping: the original gave "September 26th" with no year; 2026 is inferred from
 // the site's own dates (see docs/TBD_REGISTER.md). `when` is shown exactly as the original wrote it.

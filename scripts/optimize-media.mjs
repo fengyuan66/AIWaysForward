@@ -44,6 +44,12 @@ const jobs = [
 
   // class sub-page hero (original template texture — kept as the pages' hero image)
   { in: 'classes/hero-texture.jpg', out: 'classes/hero.webp', width: 1600 },
+
+  // October 2026 news refresh. Keep source photography and illustration in full colour.
+  { in: 'news/google-earnings-2026-10-28.jpg', out: 'news/google-earnings-2026-10-28.webp', width: 660 },
+  { in: 'news/ai-cybersecurity-2026-10-28.jpg', out: 'news/ai-cybersecurity-2026-10-28.webp', width: 660 },
+  { in: 'news/openai-google-chips-2026-10-28.jpg', out: 'news/openai-google-chips-2026-10-28.webp', width: 660 },
+  { in: 'news/anthropic-nonprofits-2026-10-26.jpg', out: 'news/anthropic-nonprofits-2026-10-26.webp', width: 660 },
 ];
 
 // news thumbnails — native size (originals are ~300px wide), lossless-ish

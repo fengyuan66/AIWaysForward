@@ -198,47 +198,67 @@ Note: Before attending this meeting, Dr. Dede would like guests to watch an intr
 
 **Heading:** Latest AI News
 
-1. **A.I. Is Everywhere in China. See For Yourself.** — https://www.nytimes.com/interactive/2026/08/21/world/asia/china-ai-life.html?searchResultPosition=3
+1. **Google misses Wall Street expectations, Alphabet stock sinks in early after-hours trading** — https://apnews.com/article/1acf6aff00d4dc084c5243d613307388
+   - Source: The Associated Press
+   - Author(s): Kaitlyn Huamani
+   - Publication Date: Oct 28th 2026
+   - Image: `/media/news/google-earnings-2026-10-28.webp`
+2. **AI's cyber scare delivers a Y2K lesson** — https://www.axios.com/2026/10/28/cybersecurity-black-october-ai-hacks
+   - Source: Axios
+   - Author(s): Sam Sabin (https://www.axios.com/authors/ssabin)
+   - Publication Date: Oct 28th 2026
+   - Image: `/media/news/ai-cybersecurity-2026-10-28.webp`
+3. **OpenAI plans to buy Google's AI chips, The Information reports** — https://www.aol.com/articles/openai-plans-buy-googles-ai-012329000.html
+   - Source: Reuters
+   - Author(s): Carlos Méndez
+   - Publication Date: Oct 28th 2026
+   - Image: `/media/news/openai-google-chips-2026-10-28.webp`
+4. **Anthropic expands AI support for nonprofits as it files to sell shares to the public** — https://apnews.com/article/e4db0d624495c8224187b3227939dd27
+   - Source: The Associated Press
+   - Author(s): Glenn Gamboa
+   - Publication Date: Oct 26th 2026
+   - Image: `/media/news/anthropic-nonprofits-2026-10-26.webp`
+5. **A.I. Is Everywhere in China. See For Yourself.** — https://www.nytimes.com/interactive/2026/08/21/world/asia/china-ai-life.html?searchResultPosition=3
    - Source: The New York Times
    - Author(s): Agnes Chang, Vivian Wang, Jiwoong Hong, Aaron Byrd and Qilai Shen
    - Publication Date: Aug 21st 2026
    - Image: `/media/news/1.webp`
-2. **Australia bans fully AI-made songs from charts after Madonna cover goes viral** — https://www.cbc.ca/news/entertainment/australia-music-chart-ban-ai-9.7319875
+6. **Australia bans fully AI-made songs from charts after Madonna cover goes viral** — https://www.cbc.ca/news/entertainment/australia-music-chart-ban-ai-9.7319875
    - Source: CBC News
    - Author(s): Kayla McLean (https://www.cbc.ca/author/kayla-mclean-1.7635421)
    - Publication Date: Aug 25th 2026
    - Image: `/media/news/2.webp`
-3. **Trump's tariffs risk higher prices for AI, video games, cellphones: experts** — https://www.cbc.ca/news/business/trump-tariff-ai-9.7318970
+7. **Trump's tariffs risk higher prices for AI, video games, cellphones: experts** — https://www.cbc.ca/news/business/trump-tariff-ai-9.7318970
    - Source: CBC News
    - Author(s): Jeff Lagerquist (https://www.cbc.ca/author/jeff-lagerquist-9.14857)
    - Publication Date: Aug 25th 2026
    - Image: `/media/news/3.webp`
-4. **Why are there suddenly so many data centres planned in Canada? Your questions answered** — https://www.cbc.ca/news/climate/data-centres-ask-faq-9.7316098
+8. **Why are there suddenly so many data centres planned in Canada? Your questions answered** — https://www.cbc.ca/news/climate/data-centres-ask-faq-9.7316098
    - Source: CBC News
    - Author(s): Alexandra Mae Jones (https://www.cbc.ca/news/author/alexandra-mae-jones-1.7305275)
    - Publication Date: Aug 23rd 2026
    - Image: `/media/news/4.webp`
-5. **Backlash against AI-generated graphics grows in N.S.** — https://www.cbc.ca/news/canada/nova-scotia/backlash-against-ai-generated-graphics-grows-in-n-s-9.7308798
+9. **Backlash against AI-generated graphics grows in N.S.** — https://www.cbc.ca/news/canada/nova-scotia/backlash-against-ai-generated-graphics-grows-in-n-s-9.7308798
    - Source: CBC News
    - Author(s): Yuan Wang (https://www.cbc.ca/author/yuan-wang-9.14373)
    - Publication Date: Aug 25th 2026
    - Image: `/media/news/5.webp`
-6. **This A.I. Start-Up Aims to Reverse the Backlash Against Data Centers** — https://www.nytimes.com/2026/08/25/business/dealbook/emerald-ai-start-up-data-center-backlash.html?searchResultPosition=2
+10. **This A.I. Start-Up Aims to Reverse the Backlash Against Data Centers** — https://www.nytimes.com/2026/08/25/business/dealbook/emerald-ai-start-up-data-center-backlash.html?searchResultPosition=2
    - Source: The New York Times
    - Author(s): Sri Muppidi ⚠ original link pointed at a different author
    - Publication Date: Aug 25th 2026
    - Image: `/media/news/6.webp`
-7. **By Opening a Model, a Chinese A.I. Lab May Test the World’s Cybersecurity** — https://www.nytimes.com/2026/08/25/science/cybersecurity-zai-open-weights.html?searchResultPosition=4
+11. **By Opening a Model, a Chinese A.I. Lab May Test the World’s Cybersecurity** — https://www.nytimes.com/2026/08/25/science/cybersecurity-zai-open-weights.html?searchResultPosition=4
    - Source: The New York Times
    - Author(s): Cade Metz
    - Publication Date: Aug 25th 2026
    - Image: `/media/news/7.webp`
-8. **Alberta minister hosts second AI data centre town hall in Sturgeon County** — https://globalnews.ca/news/12028166/ai-data-centre-town-hall-sturgeon-county/
+12. **Alberta minister hosts second AI data centre town hall in Sturgeon County** — https://globalnews.ca/news/12028166/ai-data-centre-town-hall-sturgeon-county/
    - Source: Global News
    - Author(s): Staff ⚠ original link pointed at a different author
    - Publication Date: Aug 20th 2026
    - Image: `/media/news/8.webp`
-9. **Montreal youth accused of using AI to plot school attack** — https://globalnews.ca/news/12030244/rcmp-montreal-youth-arrest-terrorism-allegations/
+13. **Montreal youth accused of using AI to plot school attack** — https://globalnews.ca/news/12030244/rcmp-montreal-youth-arrest-terrorism-allegations/
    - Source: Global News
    - Author(s): Aaron D'Andrea (https://globalnews.ca/author/aaron-dandrea/)
    - Publication Date: Aug 21st 2026

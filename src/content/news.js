@@ -1,5 +1,5 @@
 // /innovation: "Latest AI News". New reporting first, followed by the original archive.
-// Refreshed October 28, 2026. Headlines, bylines and dates checked against the linked reporting.
+// Refreshed November 16, 2026 (previous: October 28). Headlines, bylines and dates checked against the linked reporting.
 // `authors`: string | [{ text, href? }]. Two original author links pointed at the wrong person
 // (marked `suspect: true`); they are rendered unlinked until the client confirms — see docs/TBD_REGISTER.md.
 
@@ -7,6 +7,38 @@ export const news = {
   title: 'Latest AI News',
   labels: { source: 'Source', authors: 'Author(s)', date: 'Publication Date' },
   items: [
+    {
+      image: '/media/news/nvidia-anthropic-ipo-2026-11-16.webp',
+      source: 'The National',
+      authors: [{ text: 'Kyle Fitzgerald and Cody Combs' }],
+      date: 'Nov 16th 2026',
+      title: 'Nvidia earnings and Anthropic IPO lead crucial week for AI bulls',
+      href: 'https://thenationalnews.com/business/markets/2026/11/16/nvidia-earnings-anthropic-ipo',
+    },
+    {
+      image: '/media/news/chatgpt-wallet-2026-11-13.webp',
+      source: 'CNBC',
+      authors: [{ text: 'Ashley Capoot' }],
+      date: 'Nov 13th 2026',
+      title: "OpenAI launches ChatGPT Wallet, allowing its 'dots' AI agents to make purchases for users",
+      href: 'https://www.cnbc.com/2026/11/13/openai-chatgpt-wallet-dot-purchases.html',
+    },
+    {
+      image: '/media/news/anthropic-valuation-2026-11-12.webp',
+      source: 'CBC News',
+      authors: [{ text: 'Jeff Lagerquist', href: 'https://www.cbc.ca/author/jeff-lagerquist-9.14857' }],
+      date: 'Nov 12th 2026',
+      title: 'Anthropic is aiming for a $1.4-trillion valuation. Can the AI boom support it?',
+      href: 'https://www.cbc.ca/news/business/anthropic-ipo-9.7418028',
+    },
+    {
+      image: '/media/news/anthropic-fable-mythos-2026-11-09.webp',
+      source: 'TechCrunch',
+      authors: [{ text: 'Russell Brandom' }],
+      date: 'Nov 9th 2026',
+      title: 'Anthropic releases new Mythos and Fable models amid RSI concerns',
+      href: 'https://techcrunch.com/2026/11/09/anthropic-releases-new-mythos-and-fable-models-amid-rsi-concerns/',
+    },
     {
       image: '/media/news/google-earnings-2026-10-28.webp',
       source: 'The Associated Press',

@@ -1,5 +1,5 @@
 // /innovation: "Latest AI News". New reporting first, followed by the original archive.
-// Refreshed November 16, 2026 (previous: October 28). Headlines, bylines and dates checked against the linked reporting.
+// Refreshed November 16, 2026, twice (previous: October 28). Headlines, bylines and dates checked against the linked reporting.
 // `authors`: string | [{ text, href? }]. Two original author links pointed at the wrong person
 // (marked `suspect: true`); they are rendered unlinked until the client confirms — see docs/TBD_REGISTER.md.
 
@@ -7,6 +7,38 @@ export const news = {
   title: 'Latest AI News',
   labels: { source: 'Source', authors: 'Author(s)', date: 'Publication Date' },
   items: [
+    {
+      image: '/media/news/altman-nvidia-2026-11-16.webp',
+      source: 'TechCrunch',
+      authors: [{ text: 'Rebecca Bellan' }],
+      date: 'Nov 16th 2026',
+      title: "Sam Altman on Nvidia without Jensen Huang: the industry will be 'fine'",
+      href: 'https://techcrunch.com/2026/11/16/sam-altman-on-nvidia-without-jensen-huang-the-industry-will-be-fine/',
+    },
+    {
+      image: '/media/news/openai-evaluators-2026-11-16.webp',
+      source: 'CNBC',
+      authors: [{ text: 'Ashley Capoot' }],
+      date: 'Nov 16th 2026',
+      title: "OpenAI inks agreements with four independent evaluators to boost company's safety work",
+      href: 'https://www.cnbc.com/2026/11/16/openai-independent-ai-safety-evaluators.html',
+    },
+    {
+      image: '/media/news/fed-warsh-ai-2026-11-16.webp',
+      source: 'CNBC',
+      authors: [{ text: 'Jeff Cox' }],
+      date: 'Nov 16th 2026',
+      title: "Fed Chairman Kevin Warsh stresses importance of AI to economy, but says it could 'disappoint'",
+      href: 'https://www.cnbc.com/2026/11/16/fed-ai-task-force-kevin-warsh.html',
+    },
+    {
+      image: '/media/news/cantwell-ai-chips-2026-11-16.webp',
+      source: 'CNBC',
+      authors: [{ text: 'Justin Papp' }],
+      date: 'Nov 16th 2026',
+      title: 'Cantwell urges Lutnick to stop AI chip sales to China ahead of Xi meeting',
+      href: 'https://www.cnbc.com/2026/11/16/cantwell-lutnick-ai-chip-china.html',
+    },
     {
       image: '/media/news/nvidia-anthropic-ipo-2026-11-16.webp',
       source: 'The National',

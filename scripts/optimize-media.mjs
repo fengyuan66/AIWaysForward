@@ -56,6 +56,10 @@ const jobs = [
   { in: 'news/chatgpt-wallet-2026-11-13.jpg', out: 'news/chatgpt-wallet-2026-11-13.webp', width: 660 },
   { in: 'news/anthropic-valuation-2026-11-12.jpg', out: 'news/anthropic-valuation-2026-11-12.webp', width: 620 },
   { in: 'news/anthropic-fable-mythos-2026-11-09.webp', out: 'news/anthropic-fable-mythos-2026-11-09.webp', width: 660 },
+  { in: 'news/altman-nvidia-2026-11-16.jpg', out: 'news/altman-nvidia-2026-11-16.webp', width: 660 },
+  { in: 'news/openai-evaluators-2026-11-16.jpg', out: 'news/openai-evaluators-2026-11-16.webp', width: 660 },
+  { in: 'news/fed-warsh-ai-2026-11-16.jpg', out: 'news/fed-warsh-ai-2026-11-16.webp', width: 660 },
+  { in: 'news/cantwell-ai-chips-2026-11-16.jpg', out: 'news/cantwell-ai-chips-2026-11-16.webp', width: 660 },
 ];
 
 // news thumbnails — native size (originals are ~300px wide), lossless-ish
